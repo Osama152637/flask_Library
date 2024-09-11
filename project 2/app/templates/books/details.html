@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+
+{% block content %}
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ book.image) if book.image else url_for('static', filename='images/default_image.png') }}" alt="{{ book.title }}">
+                <div class="card-body">
+                    <h3 class="card-title">{{ book.title }}</h3>
+                    <p class="card-text">{{ book.description }}</p>
+                    <p class="card-text"><strong>ID:</strong> {{ book.id }}</p>
+                    <p class="card-text"><strong>Pages:</strong> {{ book.pages }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ url_for('books.home') }}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

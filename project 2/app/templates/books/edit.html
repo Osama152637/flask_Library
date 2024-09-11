@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+
+{% block content %}
+<main class="container my-5">
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="mb-4">{{ 'Editosa Book' }}</h2>
+
+                <form method="POST" enctype="multipart/form-data" action="{{ url_for('books.create') if not book else url_for('books.books_edit', id=book.id) }}">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        <label for="Booktitle" class="form-label">Booktitle</label>
+                        {{ form.Booktitle(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        {{ form.description(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pages" class="form-label">Pages number</label>
+                        {{ form.pages(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Cover Photo</label>
+                        {{ form.image(class="form-control") }}
+                    </div>
+
+                    <button type="submit" class="btn btn-success">{{ 'Update' }}</button>
+                </form>
+
+                <div class="mt-4">
+                    <a href="{{ url_for('books.home') }}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
